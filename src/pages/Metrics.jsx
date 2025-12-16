@@ -1,17 +1,17 @@
 import React from "react";
 import "../App.css";
 import Navbar from "../components/Navbar";
-// import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js";
 // import Chart from "chart.js/auto";
 // import { Line, Pie } from "react-chartjs-2";
 
 const Metrics = () => {
-  // const [chart, setChart] = React.useState(null);
-  // // supabase setup
-  // const supabaseUrl = "https://pzqupoelaedeknqrrcay.supabase.co";
-  // const supabaseKey =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6cXVwb2VsYWVkZWtucXJyY2F5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU3MzY4NDQsImV4cCI6MjA4MTMxMjg0NH0.vFWkPmHRbyCM6gMl9ZrrRUFYN5rs1GK8nzxlJ1liMV8";
-  // const supabase = createClient(supabaseUrl, supabaseKey);
+  const [chart, setChart] = React.useState(null);
+  // supabase setup
+  const supabaseUrl = "https://pzqupoelaedeknqrrcay.supabase.co";
+  const supabaseKey =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6cXVwb2VsYWVkZWtucXJyY2F5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU3MzY4NDQsImV4cCI6MjA4MTMxMjg0NH0.vFWkPmHRbyCM6gMl9ZrrRUFYN5rs1GK8nzxlJ1liMV8";
+  const supabase = createClient(supabaseUrl, supabaseKey);
 
   // // function to load specific graph based on form data
   // const getGraph = async (data) => {
@@ -181,7 +181,7 @@ const Metrics = () => {
           time and help you identify areas for improvement.
         </p>
       </div>
-      {/* <div id="var_selection">
+      <div id="var_selection">
         <form id="metric_form" onSubmit={getGraph}>
           <label htmlFor="metric_type">Choose Metric:</label>
           <select name="metric_type" id="metric_type">
@@ -200,7 +200,7 @@ const Metrics = () => {
           <button type="submit">Generate Metrics</button>
         </form>
         {chart}
-      </div> */}
+      </div>
     </>
   );
 };
