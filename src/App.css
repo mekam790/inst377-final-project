@@ -1,16 +1,7 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  margin: 6px;
+  height: 100%;
 }
 
 .App-header {
@@ -65,5 +56,21 @@ color: black;
 .navitem :hover {
 background-color: rgb(101, 61, 2);
 color: white;
+border-radius: 10px;
+}
+.paragraph {
+  font-size: 18px;
+  color: rgb(101, 61, 2);
+  text-align:center;
+}
+.button {
+  padding: 8px 16px;
+  background-color: rgb(255, 187, 92);
+}
+.link {
+  text-decoration:none;
+  color:rgb(101, 61, 2);
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
 }
 
