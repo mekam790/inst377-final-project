@@ -1,10 +1,5 @@
 # The Optimization Problem
 
-Title of your project
-Description of your project
-Description of target browsers (iOS? Android? Which ones?)
-Link to Developer Manual
-
 This website is a time-tracking tool to help users monitor how they spend their time daily and reflect on how they can improve. Users can log 30-minute time blocks, rate the fun and meaning levels of their activities, and visualize their data through charts.
 
 ## Target Browsers
