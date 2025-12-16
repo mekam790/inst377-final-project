@@ -74,3 +74,17 @@ border-radius: 10px;
   font-weight: bold;
 }
 
+/* tracking page */
+#timebox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.info {
+  margin: 0;
+  font-size: 40px;
+  font-weight: bold;
+  color: rgb(101, 61, 2);
+}

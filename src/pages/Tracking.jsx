@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import Navbar from "../components/Navbar";
-// import Clock from 'react-live-clock';
+import Clock from 'react-live-clock';
 import { createClient } from "@supabase/supabase-js";
 
 const Tracking = () => {
@@ -110,12 +110,13 @@ const Tracking = () => {
         {/* not dynamic yet*/}
         <h3>Current Date: {showDate}</h3>
       </div>
-      {/* <div id="timebox">
+      <div id="timebox">
         <h3>Current Time:</h3>
-        <Clock format={"HH:mm:ss"} ticking={true} timezone={"US/Eastern"} />
+        <Clock format={"HH:mm:ss"} className={"info"} ticking={true} timezone={"US/Eastern"} />
         <h3>Current Category:</h3>
-        <h5 id="current-category"></h5>
+        <p className="info" id="current-category"></p>
       </div>
+      {/* 
       <div id="sleepbox">
         <h2>Sleep Time Entry</h2>
         <p>Input your sleeping hours to restrict the hours you track.</p>
