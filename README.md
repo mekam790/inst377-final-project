@@ -1,31 +1,15 @@
-# Create React App
+# The Optimization Problem
 
-This directory is a brief example of a [Create React App](https://github.com/facebook/create-react-app) site that can be deployed to Vercel with zero configuration.
+Title of your project
+Description of your project
+Description of target browsers (iOS? Android? Which ones?)
+Link to Developer Manual
 
-## Deploy Your Own
+This website is a time-tracking tool to help users monitor how they spend their time daily and reflect on how they can improve. Users can log 30-minute time blocks, rate the fun and meaning levels of their activities, and visualize their data through charts.
 
-Deploy your own Create React App project with Vercel.
+## Target Browsers
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/create-react-app&template=create-react-app)
+This website supports modern browsers such as Chrome, Safari, Firefox, and Edge on both desktop and mobile platforms (iOS and Android).
 
-_Live Example: https://create-react-template.vercel.app/_
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes. You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode. See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.
-
-It correctly bundles React in production mode and optimizes the build for the best performance. The build is minified and the filenames include the hashes.
+## Developer Manual
+For a more detailed explanation of the codebase, please refer to the [Developer Manual](src/docs/devmanual.md).
