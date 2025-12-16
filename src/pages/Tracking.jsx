@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import Navbar from "../components/Navbar";
-import Clock from 'react-live-clock';
+import Clock from "../components/Clock"
 import { createClient } from "@supabase/supabase-js";
 
 const Tracking = () => {
@@ -112,7 +112,7 @@ const Tracking = () => {
       </div>
       <div id="timebox">
         <h3>Current Time:</h3>
-        <Clock format={"HH:mm:ss"} className={"info"} ticking={true} timezone={"US/Eastern"} />
+        <Clock/>
         <h3>Current Category:</h3>
         <p className="info" id="current-category"></p>
       </div>
