@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+.header {
+  display:flex;
+  align-items: center;
+  margin: 10px;
+}
+.title{
+  float:left;
+  width: 30%;
+}
+.nav{
+  float: right;
+  width: 70%
+}
+#navbar {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: auto;
+margin: 8px;
+}
+.navitem a {
+float: right;
+text-decoration: none;
+padding: 8px 16px;
+color: black;
+}
+.navitem :hover {
+background-color: rgb(101, 61, 2);
+color: white;
+}
+
