@@ -40,7 +40,8 @@ The application uses 4 API calls across the Tracking.jsx and Metrics.jsx pages:
 
 - Sometimes, the dependencies may not install correctly. If they don't, run these set of commands in the terminal:
 
-```rm -rf node_modules package-lock.json
+```
+rm -rf node_modules package-lock.json
 npm cache clean --force
 npm install
 npm start
