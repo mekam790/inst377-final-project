@@ -1,20 +1,23 @@
+:root {
+  --primary-bg-color: #ffdd8c;
+  --primary-color: rgb(255, 187, 92);
+  --secondary-color: rgb(101, 61, 2);
+  --accent-color: white;
+  --accent-color-2: black;
+}
 html {
   height: 100%;
 }
 body {
   margin: 60px;
-  background-image: linear-gradient(to bottom, #FFDD8c, #FFBB5c);
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size:cover;
-  font-family: 'Courier New', Courier, monospace;
+  background-color: var(--primary-bg-color);
+  font-family: "Courier New", Courier, monospace;
   font-weight: bold;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
