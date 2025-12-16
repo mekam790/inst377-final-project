@@ -1,16 +1,15 @@
 import React from "react";
 import "../App.css";
 import Navbar from "../components/Navbar";
-// import moment from "moment";
 // import Clock from 'react-live-clock';
-// import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js";
 
 const Tracking = () => {
-  // // supabase setup
-  // const supabaseUrl = "https://pzqupoelaedeknqrrcay.supabase.co";
-  // const supabaseKey =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6cXVwb2VsYWVkZWtucXJyY2F5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU3MzY4NDQsImV4cCI6MjA4MTMxMjg0NH0.vFWkPmHRbyCM6gMl9ZrrRUFYN5rs1GK8nzxlJ1liMV8";
-  // const supabase = createClient(supabaseUrl, supabaseKey);
+  // supabase setup
+  const supabaseUrl = "https://pzqupoelaedeknqrrcay.supabase.co";
+  const supabaseKey =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6cXVwb2VsYWVkZWtucXJyY2F5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU3MzY4NDQsImV4cCI6MjA4MTMxMjg0NH0.vFWkPmHRbyCM6gMl9ZrrRUFYN5rs1GK8nzxlJ1liMV8";
+  const supabase = createClient(supabaseUrl, supabaseKey);
 
   // get current date and time
   const date = new Date();
@@ -35,58 +34,58 @@ const Tracking = () => {
   //   confirmation.innerHTML = "Sleep time set from " + sleepFrom + " to " + sleepTo;
   // };
 
-  // // function when form is submitted
-  // const submitTracking = async (data) => {
-  //   data.preventDefault();
-  //   console.log(data.time_from);
-  //   console.log(data.time_to);
-  //   const timeData = new FormData(data.target);
+  // function when form is submitted
+  const submitTracking = async (data) => {
+    data.preventDefault();
+    console.log(data.time_from);
+    console.log(data.time_to);
+    const timeData = new FormData(data.target);
 
-  //   const timeEntry = {
-  //     from: timeData.get("time_from"),
-  //     to: timeData.get("time_to"),
-  //     activity: timeData.get("activity"),
-  //     category: timeData.get("category"),
-  //     fun_level: Number(timeData.get("fun_level")),
-  //     meaning_level: Number(timeData.get("meaning_level")),
-  //   };
-  //   const { error } = await supabase.from("time_tracker").insert([timeEntry]);
+    const timeEntry = {
+      from: timeData.get("time_from"),
+      to: timeData.get("time_to"),
+      activity: timeData.get("activity"),
+      category: timeData.get("category"),
+      fun_level: Number(timeData.get("fun_level")),
+      meaning_level: Number(timeData.get("meaning_level")),
+    };
+    const { error } = await supabase.from("time_tracker").insert([timeEntry]);
 
-  //   if (error) {
-  //     console.log("Error inserting time entry:", error);
-  //   }
-  //   await getData();
-  //   data.target.reset();
-  // };
+    if (error) {
+      console.log("Error inserting time entry:", error);
+    }
+    await getData();
+    data.target.reset();
+  };
 
-  // const getData = async () => {
-  //   console.log("getData called");
-  //   const categoryDisplay = document.getElementById("current-category");
-  //   const timesheet = document
-  //     .getElementById("timesheet")
-  //     .getElementsByTagName("tbody")[0];
-  //   timesheet.innerHTML = "";
+  const getData = async () => {
+    console.log("getData called");
+    const categoryDisplay = document.getElementById("current-category");
+    const timesheet = document
+      .getElementById("timesheet")
+      .getElementsByTagName("tbody")[0];
+    timesheet.innerHTML = "";
 
-  //   const { data, error } = await supabase.from("time_tracker").select("*");
+    const { data, error } = await supabase.from("time_tracker").select("*");
 
-  //   if (error) {
-  //     console.log(error);
-  //   } else {
-  //     console.log(data);
-  //   }
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(data);
+    }
 
-  //   data.forEach((entry) => {
-  //     const timeBlock = timesheet.insertRow();
-  //     const timeCell = timeBlock.insertCell(0);
-  //     const activityCell = timeBlock.insertCell(1);
-  //     const categoryCell = timeBlock.insertCell(2);
-  //     timeCell.innerHTML = entry.from + " - " + entry.to;
-  //     activityCell.innerHTML = entry.activity;
-  //     categoryCell.innerHTML = entry.category;
+    data.forEach((entry) => {
+      const timeBlock = timesheet.insertRow();
+      const timeCell = timeBlock.insertCell(0);
+      const activityCell = timeBlock.insertCell(1);
+      const categoryCell = timeBlock.insertCell(2);
+      timeCell.innerHTML = entry.from + " - " + entry.to;
+      activityCell.innerHTML = entry.activity;
+      categoryCell.innerHTML = entry.category;
 
-  //     categoryDisplay.innerHTML = entry.category;
-  //   });
-  // };
+      categoryDisplay.innerHTML = entry.category;
+    });
+  };
   return (
     <>
       <div class="header">
@@ -142,7 +141,7 @@ const Tracking = () => {
           <button type="submit">Submit</button>
         </form>
         <h3 id="sleep_confirm"></h3>
-      </div>
+      </div> */}
       <div id="form">
         <form id="tracking-form" onSubmit={submitTracking}>
           <label for="time_from">Time Block Start:</label>
@@ -208,7 +207,7 @@ const Tracking = () => {
             <tbody></tbody>
           </table>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };
