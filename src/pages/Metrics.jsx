@@ -66,17 +66,26 @@ const Metrics = () => {
     const labels = Object.keys(distribution);
     const chartData = {
       labels: labels,
+      // make pie chart look more appealing
       datasets: [
         {
           label: "Time Distribution (hours)",
-          borderColor: "rgb(255, 99, 132)",
+          backgroundColor: [
+            "#100B04",
+            "#422E10",
+            "#73501C",
+            "#A47228",
+            "#CF943A",
+            "#DBAE6B",
+            "#E7C99C",
+          ],
           data: Object.values(distribution),
         },
       ],
     };
     setChart(
-      <div style={{ width: 650, textAlign: "center" }}>
-        <h1 style={{ fontFamily: "monospace" }}>Time Distribution (hours)</h1>
+      <div id="metric_chart">
+        <h1>Time Distribution (hours)</h1>
         <Pie data={chartData} width={50} height={50} />
       </div>
     );
@@ -85,13 +94,13 @@ const Metrics = () => {
   // function to load line graphs for fun level and meaning level
   const getLineGraph = async (type, period) => {
     const categoryColors = {
-      physical: "red",
-      career: "blue",
-      social: "green",
-      family: "orange",
-      financial: "purple",
-      spiritual: "pink",
-      intellectual: "yellow",
+      physical: "#100B04",
+      career: "#422E10",
+      social: "#73501C",
+      family: "#A47228",
+      financial: "#CF943A",
+      spiritual: "#DBAE6B",
+      intellectual: "#E7C99C",
     };
     // different for daily and weekly/biweekly
     // if daily
@@ -107,6 +116,7 @@ const Metrics = () => {
     let month = today.getMonth() + 1;
     let year = today.getFullYear();
 
+    // filter rows based on user selection
     let dateFilter;
     if (period === "day") {
       dateFilter = `${year}-${month}-${day - 1}`;
@@ -116,34 +126,47 @@ const Metrics = () => {
       dateFilter = `${year}-${month}-${day - 14}`;
     }
 
+    // get data from supabase
     const { data, error } = await supabase
       .from("time_tracker")
       .select("*")
       .gte("date", dateFilter);
 
     if (error) {
-      console.error(error);
-      return;
+      console.log(error);
     }
 
+    // create levels object to store total and count for each day/date
     const levels = {};
+    // for each row in the data
     data.forEach((entry) => {
+      // use time stamp if daily, date if weekly/biweekly
       const key = period === "day" ? entry.from : entry.date;
 
-      if (!levels[key]) levels[key] = { total: 0, count: 0, colors: [] };
+      // add new time stamp/date to levels object if new
+      if (!levels[key]) levels[key] = { highest: 0, total: 0, count: 0, color: "", category: "" };
 
+      // add fun/meaning level to total and increment count, the daily graph will only have one entry per time stamp so count will always be 1
       const value =
         type === "fun_level" ? entry.fun_level : entry.meaning_level;
+      if (value > levels[key].highest) {
+        levels[key].highest = value;
+        levels[key].color = categoryColors[entry.category];
+        levels[key].category = entry.category;
+      }
+      console.log(value)
       levels[key].total += value;
       levels[key].count += 1;
-      levels[key].colors.push(categoryColors[entry.category] || "gray");
+      console.log(levels[key]);
     });
 
+    // labels are the time stamps/dates, values are the average fun/meaning levels
     const labels = Object.keys(levels).sort();
     const values = labels.map(
       (label) => levels[label].total / levels[label].count
     );
-    const colors = labels.map((label) => levels[label].colors[0]);
+    // colors for the weekly/biweekly should be the corresponding to the highest level of that time/date
+    const colors = labels.map((label) => levels[label].color);
 
     const chartData = {
       labels: labels,
@@ -158,11 +181,33 @@ const Metrics = () => {
         },
       ],
     };
+    // adding tooltip to show category as well
+    const chartOptions = {
+      plugins: {
+        tooltip: {
+          enabled: true,
+          callbacks: {
+            label: function (context) {
+              const label = context.dataset.label || "";
+              const value = context.parsed.y || 0;
+              const index = context.dataIndex;
+              console.log(index);
+              const category = levels[labels[index]].category;
+              return `${label}: ${value} (Category: ${category})`;
+            },
+          },
+      }
+    }
+  }
 
     setChart(
-      <div style={{ width: 650, textAlign: "center" }}>
-        <h1 style={{ fontFamily: "monospace" }}>Time Distribution</h1>
-        <Line data={chartData} width={50} height={50} />
+      <div id="metric_chart">
+        {type === "fun_level" ? (
+          <h3>Fun Level Over Time</h3>
+        ) : (
+          <h3>Meaning Level Over Time</h3>
+        )}
+        <Line data={chartData} options={chartOptions} width={50} height={50} />
       </div>
     );
   };
@@ -182,23 +227,27 @@ const Metrics = () => {
         </p>
       </div>
       <div id="var_selection">
-        <form id="metric_form" onSubmit={getGraph}>
-          <label htmlFor="metric_type">Choose Metric:</label>
-          <select name="metric_type" id="metric_type">
-            <option value="time_distribution">Time Distribution</option>
-            <option value="fun_level">Fun Level</option>
-            <option value="meaning_level">Meaning Level</option>
-          </select>
-          <br />
-          <label htmlFor="period">Time Period</label>
-          <select name="period" id="period">
-            <option value="day">Past Day</option>
-            <option value="week">Past Week</option>
-            <option value="biweek">Past 2 Weeks</option>
-          </select>
-          <br />
-          <button type="submit">Generate Metrics</button>
-        </form>
+        <div id="metric_form">
+          <form onSubmit={getGraph}>
+            <label htmlFor="metric_type">Choose Metric:</label>
+            <select name="metric_type" id="metric_type">
+              <option value="time_distribution">Time Distribution</option>
+              <option value="fun_level">Fun Level</option>
+              <option value="meaning_level">Meaning Level</option>
+            </select>
+            <br />
+            <label htmlFor="period">Time Period</label>
+            <select name="period" id="period">
+              <option value="day">Past Day</option>
+              <option value="week">Past Week</option>
+              <option value="biweek">Past 2 Weeks</option>
+            </select>
+            <br />
+            <button type="submit" className="submit">
+              Generate Metrics
+            </button>
+          </form>
+        </div>
         {chart}
       </div>
     </>
