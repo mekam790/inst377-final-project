@@ -8,7 +8,7 @@ const Tracking = () => {
   // supabase setup
   const supabaseUrl = "https://pzqupoelaedeknqrrcay.supabase.co";
   const supabaseKey =
-    "sb_secret_x7saCjh2vTPZexXtBTo20Q_T7QSzzPj";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB6cXVwb2VsYWVkZWtucXJyY2F5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU3MzY4NDQsImV4cCI6MjA4MTMxMjg0NH0.vFWkPmHRbyCM6gMl9ZrrRUFYN5rs1GK8nzxlJ1liMV8";
   const supabase = createClient(supabaseUrl, supabaseKey);
 
   // get current date and time
@@ -222,7 +222,7 @@ const Tracking = () => {
             <input type="number" id="sleep_from" name="sleep_from" required step="any"/>
             <br />
             <label htmlFor="sleep_to">Time Block End:</label>
-            <input type="number" id="sleep_to" name="sleep_to" required step="any"/>
+            <input type="number" id="sleep_to" name="sleep_to" required />
             <br />
             <button type="submit" className={"submit"}>
               Submit
