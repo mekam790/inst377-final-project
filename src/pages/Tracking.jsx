@@ -178,21 +178,24 @@ const Tracking = () => {
             etc
           </li>
           <li>
-            Career: can mean your work if you are employed, or school if you are
-            a student, so the time you spend in classes or studying
+            Academics: the time you spend in classes or studying
           </li>
           <li>
-            Financial: activities related to managing your money, like budgeting
-            or paying bills
+            Commitments: obligations like clubs
           </li>
           <li>Spiritual: activities like meditation or prayer</li>
           <li>
-            Intellectual: activities that stimulate your mind, like reading or
-            puzzles
+            Leisure: personal meaningful time for hobbies or relaxation
           </li>
-          <li>Family: time spent with family</li>
           <li>
             Social: time spent with friends or in social settings, like hangouts
+          </li>
+          <li>
+            Doomscrolling: passive consumption of media, like scrolling social
+            media or watching TV
+          </li>
+          <li>
+            Maintenance: life upkeep activities like chores or errands
           </li>
         </ul>
       </div>
@@ -240,13 +243,14 @@ const Tracking = () => {
             <br />
             <label htmlFor="category">Category:</label>
             <select id="category" name="category" required>
-              <option value="physical">Physical</option>
-              <option value="career">Career</option>
-              <option value="financial">Financial</option>
-              <option value="spiritual">Spiritual</option>
-              <option value="intellectual">Intellectual</option>
-              <option value="family">Family</option>
+              <option value="academics">Academics</option>
+              <option value="commitments">Commitments</option>
+              <option value="physical">Physical Health</option>
+              <option value="spiritual">Spiritual/Intrapersonal</option>
+              <option value="leisure">Personal Leisure</option>
+              <option value="doomscrolling">Passive Consumption</option>
               <option value="social">Social</option>
+              <option value="maintenance">Life Maintenance</option>
             </select>
             <br />
             <label htmlFor="fun_level">Fun Level (1-4):</label>
